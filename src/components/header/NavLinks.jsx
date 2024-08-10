@@ -1,5 +1,7 @@
 import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
+import MenuIcon from "@mui/icons-material/Menu";
+import CloseIcon from "@mui/icons-material/Close";
 
 export const NavLinks = () => {
   return (
@@ -10,11 +12,17 @@ export const NavLinks = () => {
 };
 
 const SlideTabs = () => {
+  const [open, setOpen] = useState(false);
+
   const [position, setPosition] = useState({
     left: 0,
     width: 0,
     opacity: 0,
   });
+
+  function toggleMenu() {
+    setOpen(!open);
+  }
 
   return (
     <ul
@@ -24,12 +32,12 @@ const SlideTabs = () => {
           opacity: 0,
         }));
       }}
-      className="relative ml-auto flex h-16 items-center bg-heroBackground px-10 py-1 dark:bg-dark"
+      className="relative flex h-16 items-center px-10 py-1 dark:bg-dark"
     >
       <div className="flex h-16 items-center justify-center text-3xl font-bold dark:text-white">
         <a href="">rthaqori</a>
       </div>
-      <div className="ml-auto flex items-center">
+      <div className="ml-auto hidden items-center md:flex">
         <a href="#">
           <Tab setPosition={setPosition}>Home</Tab>
         </a>
@@ -41,6 +49,37 @@ const SlideTabs = () => {
         </a>
         <Tab setPosition={setPosition}>Contact</Tab>
         <Cursor position={position} />
+      </div>
+
+      <div className="ml-auto md:hidden">
+        <div>
+          <button onClick={toggleMenu}>
+            <MenuIcon fontSize="large" />
+          </button>
+        </div>
+        <div
+          className={`absolute top-0 h-screen w-4/5 bg-gray-800 px-10 py-5 text-4xl font-semibold text-heroBackground shadow-2xl transition-all duration-500 ease-in-out ${open ? "right-0" : "-right-full"}`}
+        >
+          <div className="mb-8 flex justify-end">
+            <button onClick={toggleMenu}>
+              <CloseIcon fontSize="large" />
+            </button>
+          </div>
+          <ul className="flex flex-col gap-4">
+            <li>
+              <a href="#">Home</a>
+            </li>
+            <li>
+              <a href="#about">About</a>
+            </li>
+            <li>
+              <a href="#projects">Project</a>
+            </li>
+            <li>
+              <a href="">Contact</a>
+            </li>
+          </ul>
+        </div>
       </div>
     </ul>
   );

@@ -3,7 +3,7 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
-      width: {
+      maxWidth: {
         "9xl": "1440px",
       },
       keyframes: {

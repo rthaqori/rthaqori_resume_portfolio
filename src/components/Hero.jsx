@@ -72,7 +72,7 @@ const Hero = () => {
                 ease: "easeInOut",
               }}
             ></motion.div>
-            <div className="absolute text-5xl font-bold">
+            <div className="absolute text-3xl font-bold md:text-5xl">
               <AnimatePresence>
                 {isVisible && (
                   <div className="flex text-heroBackground dark:text-black">
@@ -99,7 +99,7 @@ const Hero = () => {
           </motion.div>
 
           <div className="flex h-screen items-center justify-center">
-            <div className="flex h-fit w-full flex-col items-center justify-center text-8xl font-medium">
+            <div className="flex h-fit w-full flex-col items-center justify-center text-5xl font-medium md:text-6xl lg:text-8xl">
               <div className="mt-10 flex w-full items-center justify-center overflow-clip">
                 <motion.div
                   initial={{ opacity: 0, y: 75 }}

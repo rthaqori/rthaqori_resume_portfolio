@@ -24,16 +24,22 @@ const AboutSection = () => {
 
   return (
     <Container>
-      <div id="about" className="px-12 py-20">
-        <div className="mt-10 flex">
-          <div className="w-1/4 text-right">
+      <div
+        id="about"
+        className="md:py:16 px-6 py-10 md:px-10 lg:px-12 lg:py-20"
+      >
+        <div className="mt-10 flex flex-col gap-4 md:gap-0 lg:flex-row">
+          <div className="text-right lg:w-1/4">
             <div className="h-fit overflow-hidden">
-              <h1 className="text-nowrap font-serif text-5xl font-semibold">
+              <h1 className="text-nowrap text-center font-serif text-5xl font-semibold">
                 What I do:
               </h1>
             </div>
           </div>
-          <div ref={ref} className="w-3/4 px-6 text-justify">
+          <div
+            ref={ref}
+            className="mt-3 px-6 text-justify md:mt-6 lg:mt-0 lg:w-3/4"
+          >
             <motion.p
               initial="hidden"
               animate={mainControls}
@@ -49,7 +55,7 @@ const AboutSection = () => {
             </motion.p>
           </div>
         </div>
-        <div className="mt-6 flex w-full items-center justify-center">
+        <div className="mt-2 flex w-full items-center justify-center lg:mt-6">
           <ScrollYProgressAnimate>
             <motion.div
               className="h-32 w-32 rounded-3xl bg-white shadow-2xl"

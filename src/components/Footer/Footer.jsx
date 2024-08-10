@@ -8,8 +8,8 @@ const Footer = () => {
   return (
     <div className="w-full rounded-t-[50px] bg-gray-900 text-heroBackground">
       <Container>
-        <div className="p-10 pb-2">
-          <div className="flex flex-col gap-4 px-6 text-4xl font-bold">
+        <div className="py-8 pb-2 md:p-10">
+          <div className="flex flex-col gap-4 px-6 text-xl font-bold md:text-4xl">
             <div className="flex justify-end gap-3">
               <p>
                 Let's make some <span className="italic">Magic</span>{" "}
@@ -32,11 +32,11 @@ const Footer = () => {
             </div>
           </div>
 
-          <hr className="my-10 border-heroBackground" />
+          <hr className="mb-4 mt-6 border-heroBackground md:my-10" />
 
-          <div className="flex w-full justify-between px-6 pb-6">
+          <div className="flex w-full flex-col justify-between px-6 pb-6 md:flex-row">
             <div className="flex flex-col">
-              <div className="mt-4 flex flex-col items-start gap-2 rounded-[10vh] px-6 py-3 text-lg shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px]">
+              <div className="flex flex-col items-start gap-2 rounded-[10vh] px-6 py-3 text-lg shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px] md:mt-4">
                 <a
                   href="mailto:ramanthaqori@gmail.com"
                   target="_blank"
