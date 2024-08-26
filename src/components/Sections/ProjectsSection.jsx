@@ -1,7 +1,6 @@
 import React from "react";
 import Container from "../UtilComponents/Container";
 import ProjectCard from "../Cards/ProjectCard";
-import { GitHub } from "@mui/icons-material";
 
 const ProjectsSection = () => {
   const projects = [
