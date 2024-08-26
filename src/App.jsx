@@ -1,11 +1,18 @@
 // App.js
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { DarkModeProvider } from "./components/DarkModeContext";
 import Hero from "./components/Hero";
 import Cursor from "./components/Cursor";
 import { motion } from "framer-motion";
 
 const App = () => {
+  const [width, setWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => setWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   return (
     <DarkModeProvider>
       <div className="overflow-hidden bg-white dark:bg-dark">
@@ -14,7 +21,7 @@ const App = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.2, delay: 4.5 }}
         >
-          <Cursor />
+          {width > 1200 && <Cursor />}
         </motion.div>
         <Hero />
       </div>
