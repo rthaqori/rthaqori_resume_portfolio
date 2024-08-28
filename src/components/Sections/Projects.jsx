@@ -8,7 +8,7 @@ import {
 
 const data = [
   {
-    title: "ShoeEcommerce",
+    title: "Shoe Ecommerce",
     description:
       "Ecommerce Shoe Site built with React.js and Tailwind CSS, allowing users to browse various shoe products, filter by gender, category, size, price, and colour, add their favourite items to a favourites list and add the products they want to buy to their bag.",
     image: "./assets/shoe.png",
@@ -16,7 +16,7 @@ const data = [
     Live: "https://ecommerce-shoe-project.vercel.app/",
   },
   {
-    title: "ClothesEcommerce",
+    title: "Clothes Ecommerce",
     description:
       "Ecommerce Clothes Site developed with React.js and Tailwind CSS, featuring product browsing, filtering by gender, category, size, price, and colour, and a favourites list. Additionally, it integrates Google Firebase for user creation, login authentication, and product management in the database.",
     image: "./assets/clothes.png",
@@ -126,7 +126,7 @@ function Title({ data, setSelectedProject, selectedProject, link }) {
 function Description({ title, description, selectedProject, index, crop }) {
   return (
     <div
-      className={`flex items-center justify-between bg-gray-900 pl-2 pr-10 transition-all duration-200 ease-in-out md:pl-6 lg:pl-10`}
+      className={`flex items-center justify-between bg-gray-900 pl-2 pr-10 transition-all duration-300 ease-in-out md:pl-6 lg:pl-10`}
       style={{
         clipPath:
           selectedProject === index ? "inset(0 0 0)" : "inset(50% 0 50%)",
