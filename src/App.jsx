@@ -21,7 +21,7 @@ const App = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.2, delay: 4.5 }}
         >
-          {width > 1200 && <Cursor />}
+          {width > 1024 && <Cursor />}
         </motion.div>
         <Hero />
       </div>

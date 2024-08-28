@@ -16,6 +16,13 @@ import Projects from "./Sections/Projects";
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(true);
   const containerRef = useRef(null);
+  const [width, setWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => setWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   // Set a timeout to trigger the exit animation after the initial animation is complete
   useEffect(() => {
@@ -155,9 +162,8 @@ const Hero = () => {
           <AboutSection />
 
           <AnimatedHr />
-          <Projects />
 
-          {/* <ProjectsSection /> */}
+          {width > 1024 ? <Projects /> : <ProjectsSection />}
 
           <Footer />
         </div>
