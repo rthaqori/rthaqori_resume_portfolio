@@ -11,6 +11,7 @@ import {
 } from "framer-motion";
 import Header from "./header/Header";
 import Footer from "./Footer/Footer";
+import Projects from "./Sections/Projects";
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(true);
@@ -154,8 +155,9 @@ const Hero = () => {
           <AboutSection />
 
           <AnimatedHr />
+          <Projects />
 
-          <ProjectsSection />
+          {/* <ProjectsSection /> */}
 
           <Footer />
         </div>

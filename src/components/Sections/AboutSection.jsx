@@ -1,26 +1,17 @@
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import Container from "../UtilComponents/Container";
-import { motion, useInView, useAnimation, useScroll } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import ScrollYProgressAnimate from "../UtilComponents/ScrollYProgressAnimate";
 
+const text =
+  "I am a front-end developer with strong expertise in HTML, CSS, and Tailwind, paired with solid experience in JavaScript and React.js. I also have a working knowledge of TypeScript and Framer Motion, along with a keen eye for user interface and web design. My focus is on creating visually appealing and responsive web applications that deliver a seamless user experience.";
 const AboutSection = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
-  const mainControls = useAnimation();
+  const container = useRef(null);
 
-  useEffect(() => {
-    if (isInView) {
-      mainControls.start("reveal");
-    }
-  }, [isInView, mainControls]);
-
-  const text =
-    "I am a software developer with a passion for creating innovative and user-friendly applications. I have experience working with a variety of programming languages and technologies, including JavaScript, HTML/CSS, and React. Let's build something extraordinary together.";
-
-  const textVariants = {
-    hidden: { opacity: 0 },
-    reveal: { opacity: 1 },
-  };
+  const { scrollYProgress } = useScroll({
+    target: container,
+    offset: ["start end", `65vh end`],
+  });
 
   return (
     <Container>
@@ -36,23 +27,37 @@ const AboutSection = () => {
               </h1>
             </div>
           </div>
+
           <div
-            ref={ref}
-            className="mt-3 px-6 text-justify md:mt-6 lg:mt-0 lg:w-3/4"
+            ref={container}
+            className="relative mt-3 text-justify text-2xl md:mt-6 md:text-3xl lg:mt-0 lg:w-3/4"
           >
-            <motion.p
-              initial="hidden"
-              animate={mainControls}
-              variants={textVariants}
-              transition={{ staggerChildren: 0.01 }}
-              className="mb-8 text-2xl"
-            >
+            <p className="absolute top-0 z-10 mb-8 text-black">
               {text.split("").map((char, index) => (
-                <motion.span key={index} variants={textVariants}>
+                <motion.span
+                  key={index}
+                  style={{
+                    opacity: useTransform(
+                      scrollYProgress,
+                      [index / text.length, (index + 1) / text.length],
+                      [0, 1],
+                    ),
+                  }}
+                >
                   {char}
                 </motion.span>
               ))}
-            </motion.p>
+            </p>
+            <p className="absolute top-0 mb-8 text-gray-400">
+              {text.split("").map((char, index) => (
+                <span key={index}>{char}</span>
+              ))}
+            </p>
+            <p className="mb-8 opacity-0">
+              {text.split("").map((char, index) => (
+                <span key={index}>{char}</span>
+              ))}
+            </p>
           </div>
         </div>
         <div className="mt-2 flex w-full items-center justify-center lg:mt-6">
