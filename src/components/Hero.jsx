@@ -57,7 +57,7 @@ const Hero = () => {
         {" "}
         <Header />
       </motion.div>
-      <div className="bg-heroBackground">
+      <div className="bg-heroBackground dark:bg-[#111111]">
         <div ref={containerRef}>
           <motion.div className="pointer-events-none fixed z-50 flex h-screen w-screen items-center justify-center">
             <motion.div
@@ -151,7 +151,9 @@ const Hero = () => {
                   transition={{ duration: 1.5, delay: 4 }}
                   className="border bg-green-900 px-5 py-2 font-normal text-white"
                 >
-                  My Work
+                  <a className="h-full w-full" href="#myWork">
+                    My Work
+                  </a>
                 </motion.button>
               </motion.div>
             </div>
@@ -163,7 +165,9 @@ const Hero = () => {
 
           <AnimatedHr />
 
-          {width > 1024 ? <Projects /> : <ProjectsSection />}
+          <div className="py-1" id="myWork">
+            {width > 1024 ? <Projects /> : <ProjectsSection />}
+          </div>
 
           <Footer />
         </div>

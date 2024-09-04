@@ -1,11 +1,12 @@
 // App.js
 import React, { useEffect, useState } from "react";
-import { DarkModeProvider } from "./components/DarkModeContext";
+import { useDarkMode } from "./components/DarkModeContext";
 import Hero from "./components/Hero";
 import Cursor from "./components/Cursor";
 import { motion } from "framer-motion";
 
 const App = () => {
+  const { darkMode, toggleDarkMode } = useDarkMode();
   const [width, setWidth] = useState(window.innerWidth);
 
   useEffect(() => {
@@ -13,19 +14,26 @@ const App = () => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  const modeImg = darkMode ? "./assets/moon.svg" : "./assets/sun.svg";
+
   return (
-    <DarkModeProvider>
-      <div className="overflow-hidden bg-white dark:bg-dark">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.2, delay: 4.5 }}
-        >
-          {width > 1024 && <Cursor />}
-        </motion.div>
-        <Hero />
-      </div>
-    </DarkModeProvider>
+    <div className="overflow-hidden bg-white dark:bg-dark">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.2, delay: 4.5 }}
+      >
+        {width > 1024 && <Cursor />}
+      </motion.div>
+      <Hero />
+      <button
+        onClick={toggleDarkMode}
+        className="fixed bottom-10 right-10 flex h-10 w-10 items-center justify-center rounded-full md:h-6 md:w-6"
+      >
+        <img className="" src={modeImg} alt="modeImg" />
+      </button>
+    </div>
   );
 };
 

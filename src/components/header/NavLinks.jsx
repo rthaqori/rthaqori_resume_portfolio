@@ -32,7 +32,7 @@ const SlideTabs = () => {
           opacity: 0,
         }));
       }}
-      className="relative flex h-16 items-center px-10 py-1 dark:bg-dark"
+      className="relative flex h-16 items-center px-4 py-1 dark:bg-dark sm:px-6 md:px-8 lg:px-10"
     >
       <div className="flex h-16 items-center justify-center text-3xl font-bold dark:text-white">
         <a href="">rthaqori</a>
@@ -54,11 +54,11 @@ const SlideTabs = () => {
       <div className="ml-auto md:hidden">
         <div>
           <button onClick={toggleMenu}>
-            <MenuIcon fontSize="large" />
+            <MenuIcon fontSize="large" className="dark:text-heroBackground" />
           </button>
         </div>
         <div
-          className={`absolute top-0 h-screen w-4/5 bg-gray-800 px-10 py-5 text-4xl font-semibold text-heroBackground shadow-2xl transition-all duration-500 ease-in-out ${open ? "right-0" : "-right-full"}`}
+          className={`absolute top-0 h-screen w-4/5 bg-gray-800 px-4 py-5 text-4xl font-semibold text-heroBackground shadow-2xl backdrop-blur-3xl transition-all duration-500 ease-in-out dark:bg-white dark:text-[#111111] sm:px-6 md:px-8 lg:px-10 ${open ? "right-0" : "-right-full"}`}
         >
           <div className="mb-8 flex justify-end">
             <button onClick={toggleMenu}>

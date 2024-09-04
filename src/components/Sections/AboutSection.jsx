@@ -22,7 +22,7 @@ const AboutSection = () => {
         <div className="mt-10 flex flex-col gap-4 md:gap-0 lg:flex-row">
           <div className="text-right lg:w-1/4">
             <div className="h-fit overflow-hidden">
-              <h1 className="text-nowrap text-center font-serif text-5xl font-semibold">
+              <h1 className="text-nowrap text-center font-serif text-5xl font-semibold dark:text-heroBackground">
                 What I do:
               </h1>
             </div>
@@ -32,7 +32,7 @@ const AboutSection = () => {
             ref={container}
             className="relative mt-3 text-justify text-2xl md:mt-6 md:text-3xl lg:mt-0 lg:w-3/4"
           >
-            <p className="absolute top-0 z-10 mb-8 text-black">
+            <p className="absolute top-0 z-10 mb-8 text-black dark:text-heroBackground">
               {text.split("").map((char, index) => (
                 <motion.span
                   key={index}
@@ -48,7 +48,7 @@ const AboutSection = () => {
                 </motion.span>
               ))}
             </p>
-            <p className="absolute top-0 mb-8 text-gray-400">
+            <p className="absolute top-0 mb-8 text-gray-700">
               {text.split("").map((char, index) => (
                 <span key={index}>{char}</span>
               ))}
@@ -63,7 +63,7 @@ const AboutSection = () => {
         <div className="mt-2 flex w-full items-center justify-center lg:mt-6">
           <ScrollYProgressAnimate>
             <motion.div
-              className="h-32 w-32 rounded-3xl bg-white shadow-2xl"
+              className="h-32 w-32 rounded-3xl bg-white shadow-2xl dark:bg-heroBackground"
               whileHover={{ scale: 1.2, rotate: 90 }}
               whileTap={{ scale: 0.8, rotate: -90, borderRadius: "100%" }}
             >

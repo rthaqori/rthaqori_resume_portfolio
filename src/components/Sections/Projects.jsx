@@ -5,6 +5,7 @@ import {
   useTransform,
   useMotionTemplate,
 } from "framer-motion";
+import HoverCard from "../Cards/HoverCard";
 
 const data = [
   {
@@ -50,19 +51,20 @@ export default function Projects() {
 
   return (
     <div className="my-10 md:my-20">
-      <h2 className="mb-8 text-center text-5xl font-bold md:mb-10 lg:mb-12">
+      <h2 className="mb-8 text-center text-5xl font-bold dark:text-heroBackground md:mb-10 lg:mb-12">
         Projects
       </h2>
       <div className="relative h-fit">
         <div className="top-0 z-[1] w-full">
-          <div className="w-full border-t border-gray-400">
+          <div className="w-full border-t border-gray-400 dark:border-gray-700">
             {data.map((project, i) => (
               <Title
                 key={i}
                 data={{ ...project, i }}
                 setSelectedProject={setSelectedProject}
                 selectedProject={selectedProject}
-                link={project.Live}
+                liveLink={project.Live}
+                githubLink={project.GitHub}
               />
             ))}
           </div>
@@ -84,7 +86,13 @@ export default function Projects() {
   );
 }
 
-function Title({ data, setSelectedProject, selectedProject, link }) {
+function Title({
+  data,
+  setSelectedProject,
+  selectedProject,
+  liveLink,
+  githubLink,
+}) {
   const { title, i } = data;
   const container = useRef(null);
 
@@ -96,29 +104,47 @@ function Title({ data, setSelectedProject, selectedProject, link }) {
   const clipProgress = useTransform(scrollYProgress, [0, 1], [100, 0]);
   const clip = useMotionTemplate`inset(0 ${clipProgress}% 0 0)`;
 
-  console.log(link);
   return (
-    <div
-      ref={container}
-      className="relative z-[2] cursor-default border-b border-gray-400"
-    >
-      <div
-        className="inline-block pl-2 md:pl-6 lg:pl-10"
-        onMouseOver={() => setSelectedProject(i)}
-        onMouseLeave={() => setSelectedProject(null)}
-      >
-        <a target="_blank" href={link}>
-          <motion.p
-            style={{ clipPath: clip }}
-            className="relative z-[2] m-0 inline-block text-[8vw] font-bold uppercase leading-[7.5vw] text-[#1c1c1c]"
-          >
-            {title}
-          </motion.p>
-        </a>
-        <p className="absolute top-0 z-[1] m-0 block text-[8vw] font-bold uppercase leading-[7.5vw] text-gray-300">
-          {title}
-        </p>
-      </div>
+    <div className="w-screen border-b border-gray-400 dark:border-gray-700">
+      <HoverCard
+        triggerContent={
+          <div ref={container} className="relative z-[2] cursor-default">
+            <div
+              className="inline-block pl-2 md:pl-6 lg:pl-10"
+              onMouseOver={() => setSelectedProject(i)}
+              onMouseLeave={() => setSelectedProject(null)}
+            >
+              <motion.p
+                style={{ clipPath: clip }}
+                className="relative z-[2] m-0 inline-block text-[8vw] font-bold uppercase leading-[7.5vw] text-[#1c1c1c] dark:text-heroBackground"
+              >
+                {title}
+              </motion.p>
+              <p className="absolute top-0 z-[1] m-0 block text-[8vw] font-bold uppercase leading-[7.5vw] text-gray-300 dark:text-gray-800">
+                {title}
+              </p>
+            </div>
+          </div>
+        }
+        hoverContent={
+          <div className="relative z-50 flex flex-col gap-2">
+            <a
+              className="text-nowrap text-base font-semibold transition-colors duration-300 ease-in-out hover:text-green-600 dark:text-heroBackground dark:hover:text-green-600"
+              target="_blank"
+              href={liveLink}
+            >
+              Live Demo
+            </a>
+            <a
+              className="text-nowrap text-base font-semibold transition-colors duration-300 ease-in-out hover:text-green-600 dark:text-heroBackground dark:hover:text-green-600"
+              target="_blank"
+              href={githubLink}
+            >
+              Github Repo
+            </a>
+          </div>
+        }
+      />
     </div>
   );
 }
@@ -126,16 +152,16 @@ function Title({ data, setSelectedProject, selectedProject, link }) {
 function Description({ title, description, selectedProject, index, crop }) {
   return (
     <div
-      className={`flex items-center justify-between bg-gray-900 pl-2 pr-10 transition-all duration-300 ease-in-out md:pl-6 lg:pl-10`}
+      className={`flex items-center justify-between bg-gray-900 pl-2 pr-10 backdrop-blur-3xl transition-all duration-300 ease-in-out dark:bg-heroBackground md:pl-6 lg:pl-10`}
       style={{
         clipPath:
           selectedProject === index ? "inset(0 0 0)" : "inset(50% 0 50%)",
       }}
     >
-      <p className="relative z-[2] m-0 text-[8vw] font-bold uppercase leading-[7.5vw] text-heroBackground">
+      <p className="relative z-[2] m-0 text-[8vw] font-bold uppercase leading-[7.5vw] text-heroBackground dark:text-[#111111]">
         {crop(title, 9)}
       </p>
-      <p className="ml-5 line-clamp-4 w-[40%] text-justify text-[1vw] font-bold text-heroBackground">
+      <p className="ml-5 line-clamp-4 w-[40%] text-justify text-[1vw] font-bold text-heroBackground dark:text-[#111111]">
         {description}
       </p>
     </div>
