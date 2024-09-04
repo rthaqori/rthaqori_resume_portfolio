@@ -29,7 +29,7 @@ const App = () => {
       <Hero />
       <button
         onClick={toggleDarkMode}
-        className="fixed bottom-10 right-10 flex h-10 w-10 items-center justify-center rounded-full md:h-6 md:w-6"
+        className="fixed bottom-5 right-5 flex h-10 w-10 items-center justify-center rounded-full md:bottom-10 md:right-10 md:h-6 md:w-6"
       >
         <img className="" src={modeImg} alt="modeImg" />
       </button>
